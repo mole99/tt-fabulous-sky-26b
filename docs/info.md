@@ -38,6 +38,7 @@ SYS_RESET applies a reset during fabric reconfiguration and can only be directly
 ## How to test
 
 First, compile a bitstream for your user design.
+The bitstream is big-endian with 32-bit words.
 
 1. Set rst_n to 1 to reset the configuration interface. 
 2. Set rst_n to 0 to enable the configuration interface. 
