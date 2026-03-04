@@ -1,0 +1,53 @@
+meta:
+  flow: Classic
+  substituting_steps:
+    Checker.DisconnectedPins: null
+
+DESIGN_NAME: tt_um_fabulous_ihp_26a
+VERILOG_FILES:
+  - dir::src/tt_um_fabulous_ihp_26a.sv
+  - dir::ip/fabric_config/fabric_config.sv
+  - dir::ip/fabric_bitbang/fabric_bitbang.sv
+  
+CLOCK_PORT: clk
+CLOCK_PERIOD: 10 # 10ns = 100MHz
+
+FP_SIZING: "absolute"
+DIE_AREA: [0, 0, 854.400, 710.640]
+FP_DEF_TEMPLATE: dir::src/tt_block_4x4_pgvdd.def
+
+PDN_CFG: dir::src/pdn_cfg.tcl
+PDN_EXTEND_TO: "boundary"
+
+PL_TARGET_DENSITY_PCT: 40
+GRT_ALLOW_CONGESTION: true
+
+# TODO clock gating?
+SYNTH_CLOCKGATE_POSEDGE_ICG: "sg13g2_lgcp_1/GATE/CLK/GCLK"
+SYNTH_CLOCKGATE_MIN_WIDTH: 4
+
+RT_MAX_LAYER: TopMetal1
+FP_PDN_MULTILAYER: False
+
+# Width should be multiple of 0.48 (Metal2 pitch)
+# Height should be multiple of 0.42 (Metal3 pitch)
+# Standard cell row height: 3.78 (9 Metal3 tracks)
+FP_MACRO_HORIZONTAL_HALO: expr::(0.48 * 8)
+FP_MACRO_VERTICAL_HALO: expr::(0.42 * 9)
+
+MACROS:
+  eFPGA:
+    gds:
+      - dir::fabrics/tiny_fabric_5x5/macro/ihp-sg13g2/gds/eFPGA.gds
+    lef:
+      - dir::fabrics/tiny_fabric_5x5/macro/ihp-sg13g2/lef/eFPGA.lef
+    nl:
+      - dir::fabrics/tiny_fabric_5x5/macro/ihp-sg13g2/nl/eFPGA.nl.v
+    instances:
+      eFPGA:
+        location: [expr::(0.48 * 100), expr::(0.42 * 27)]
+        orientation: FS
+
+
+PDN_MACRO_CONNECTIONS:
+- "eFPGA VPWR VGND VPWR VGND"

@@ -1,36 +1,64 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg)
 
-# Tiny Tapeout Analog Project Template
+# Tiny FABulous FPGA - IHP26a
 
-- [Read the documentation for project](docs/info.md)
+- [Read the documentation for the project](docs/info.md)
 
-## What is Tiny Tapeout?
+## Requirements
 
-Tiny Tapeout is an educational project that aims to make it easier and cheaper than ever to get your digital designs manufactured on a real chip.
+> [!NOTE]
+> Make sure to clone the repository with submodules!
+>
+>```console
+>git clone --recurse-submodules <url>.git
+>```
+> or initialize the submodules after cloning:
+>
+>```console
+> git submodule update --init --recursive
+>```
 
-To learn more and get started, visit https://tinytapeout.com.
+For information on installing Nix with the FOSSi Foundation cache, please refer to the LibreLane documentation: https://librelane.readthedocs.io/en/stable/installation/nix_installation/index.html
 
-## Analog projects
+## Stitch the Fabric
 
-For specifications and instructions, see the [analog specs page](https://tinytapeout.com/specs/analog/).
+As a prerequisite make sure that the tiles for the tile library that you are using have been implemented in `ip/fabulous-tiles`.
 
-## Enable GitHub actions to build the results page
+If so, you can proceed by enabling a Nix shell with LibreLane in this repository:
 
-- [Enabling GitHub Pages](https://tinytapeout.com/faq/#my-github-action-is-failing-on-the-pages-part)
+```
+nix-shell
+```
 
-## Resources
+To implement the fabric, run:
 
-- [FAQ](https://tinytapeout.com/faq/)
-- [Digital design lessons](https://tinytapeout.com/digital_design/)
-- [Learn how semiconductors work](https://tinytapeout.com/siliwiz/)
-- [Join the community](https://tinytapeout.com/discord)
+```
+make tiny_fabric_5x5
+```
 
-## What next?
+After the fabric has been implemented you can view it either in OpenROAD or KLayout by appending `-openroad` or `-klayout` to the fabric name.
+For example, to view `tiny_fabric_5x5` in OpenROAD, run: `make tiny_fabric_5x5-openroad`.
 
-- [Submit your design to the next shuttle](https://app.tinytapeout.com/).
-- Edit [this README](README.md) and explain your design, how it works, and how to test it.
-- Share your project on your social network of choice:
-  - LinkedIn [#tinytapeout](https://www.linkedin.com/search/results/content/?keywords=%23tinytapeout) [@TinyTapeout](https://www.linkedin.com/company/100708654/)
-  - Mastodon [#tinytapeout](https://chaos.social/tags/tinytapeout) [@matthewvenn](https://chaos.social/@matthewvenn)
-  - X (formerly Twitter) [#tinytapeout](https://twitter.com/hashtag/tinytapeout) [@tinytapeout](https://twitter.com/tinytapeout)
-  - Bluesky [@tinytapeout.com](https://bsky.app/profile/tinytapeout.com)
+## Implement User Designs
+
+Please see the README in `user_designs/` on how to implement a user design for the fabric.
+
+## Implement Tiny FABulous FPGA
+
+Enable a Nix shell with LibreLane dev:
+
+```
+nix shell github:librelane/librelane/dev
+```
+
+Implement the design:
+
+```
+librelane config.yaml --pdk ihp-sg13g2 --save-views-to macro/
+```
+
+Open in OpenROAD:
+
+```
+librelane config.yaml --pdk ihp-sg13g2 --last-run --flow OpenInOpenROAD
+```
