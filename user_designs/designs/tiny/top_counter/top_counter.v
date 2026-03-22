@@ -10,13 +10,6 @@ module top_counter (
     output wire [7:0] uo
 );
 
-    wire clk_buf;
-
-    GBUF clock_buf (
-      .IN   (clk),
-      .OUT  (clk_buf)
-    );
-
     reg [7:0] ctr1;
     
     wire rst;
@@ -29,7 +22,7 @@ module top_counter (
     );
 
     // Reset before enable
-    always @(posedge clk_buf) begin
+    always @(posedge clk) begin
         if (rst) begin
             ctr1 <= '0;
         end else begin

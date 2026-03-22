@@ -9,14 +9,6 @@ module sys_reset (
     input  wire [5:0] a,
     output wire [5:0] b
 );
-
-    wire clk1_buf;
-
-    GBUF clock_buf_i (
-      .IN   (clk1),
-      .OUT  (clk1_buf)
-    );
-
     wire rst, rst_buf;
 
     SYS_RESET SYS_RESET (
@@ -30,7 +22,7 @@ module sys_reset (
 
     logic [5:0] data;
 
-    always_ff @(posedge clk1_buf) begin
+    always_ff @(posedge clk1) begin
         if (rst_buf) begin
             data <= 6'h37;
         end else begin
