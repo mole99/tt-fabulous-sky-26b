@@ -23,9 +23,9 @@ $(FABRICS_KLAYOUT):
 
 copy-fabric:
 	# Copy fabric database
-	mkdir -p user_designs/fabrics/tiny_fabric_8x5/macro/ihp-sg13g2/
-	cp -R fabrics/tiny_fabric_8x5/macro/ihp-sg13g2/fabulous/ user_designs/fabrics/tiny_fabric_8x5/macro/ihp-sg13g2/
-	cp fabrics/tiny_fabric_8x5/constraints.pcf user_designs/fabrics/tiny_fabric_8x5/constraints.pcf
+	mkdir -p user_designs/fabrics/tiny_fabric_9x5/macro/ihp-sg13g2/
+	cp -R fabrics/tiny_fabric_9x5/macro/ihp-sg13g2/fabulous/ user_designs/fabrics/tiny_fabric_9x5/macro/ihp-sg13g2/
+	cp fabrics/tiny_fabric_9x5/constraints.pcf user_designs/fabrics/tiny_fabric_9x5/constraints.pcf
 .PHONY: copy-fabric
 
 tt-fabulous:
