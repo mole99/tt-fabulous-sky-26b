@@ -23,4 +23,4 @@ sim_build/
 *.gtkw
 
 # explicitly allow nextpnr model
-!user_designs/fabrics/tiny_fabric_5x5/macro/
+!user_designs/fabrics/*/macro/
