@@ -65,7 +65,7 @@ jobs:
     strategy:
       matrix:
         pdk: [sky130A]
-        fabrics: [tiny_fabric_9x5]
+        fabrics: [tiny_fabric_10x4]
     name: Fabric (${{ matrix.fabrics }}/${{ matrix.pdk }})
     steps:
       - uses: actions/checkout@v4
