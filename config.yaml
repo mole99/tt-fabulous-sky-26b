@@ -73,3 +73,6 @@ PDN_MACRO_CONNECTIONS:
 # No extract-unique, because the power straps
 # are connected in the top-level integration
 MAGIC_EXT_UNIQUE: notopports
+
+# Tiny Tapeout expects pins to match the template DEF
+MAGIC_WRITE_LEF_PINONLY: true
