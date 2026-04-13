@@ -1,9 +1,9 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg)
 
-# Tiny FABulous FPGA - IHP26a
+# Tiny FABulous FPGA - SKY26a
 
 - [Read the documentation for the project](docs/info.md)
-- [View the layout in your browser](https://gds-viewer.tinytapeout.com/?model=https://raw.githubusercontent.com/mole99/tt-fabulous-ihp-26a/refs/heads/main/gds/tt_um_fabulous_ihp_26a.gds&pdk=ihp-sg13g2)
+- [View the layout in your browser](https://gds-viewer.tinytapeout.com/?model=https://raw.githubusercontent.com/mole99/tt-fabulous-sky-26a/refs/heads/main/gds/tt_um_fabulous_sky_26a.gds&pdk=sky130A)
 
 ## Requirements
 
@@ -33,11 +33,11 @@ nix-shell
 To implement the fabric, run:
 
 ```
-make tiny_fabric_9x5
+make tiny_fabric_10x4
 ```
 
 After the fabric has been implemented you can view it either in OpenROAD or KLayout by appending `-openroad` or `-klayout` to the fabric name.
-For example, to view `tiny_fabric_9x5` in OpenROAD, run: `make tiny_fabric_9x5-openroad`.
+For example, to view `tiny_fabric_10x4` in OpenROAD, run: `make tiny_fabric_10x4-openroad`.
 
 ## Implement User Designs
 
@@ -151,7 +151,7 @@ And it will run all available test cases for the selected fabric and tile librar
 Before running the RTLG/GL simulation, enable a PDK version using ciel:
 
 ```
-ciel enable --pdk-family ihp-sg13g2 d335549443691aa7b6095c4186961c5806e0bcff
+ciel enable --pdk-family sky130 7b70722e33c03fcb5dabcf4d479fb0822d9251c9
 ```
 
 To start the RTL simulation, simply run cocotb:
