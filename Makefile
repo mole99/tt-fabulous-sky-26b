@@ -43,6 +43,6 @@ tt-fabulous-klayout:
 # Copy the files for Tiny Tapeout
 copy-tt:
 	# Copy GDS and LEF
-	cp macro/gds/tt_um_fabulous_sky_26a.gds gds/tt_um_fabulous_sky_26a.gds
-	cp macro/lef/tt_um_fabulous_sky_26a.lef lef/tt_um_fabulous_sky_26a.lef
+	cp macro/gds/tt_um_fabulous_sky_26b.gds gds/tt_um_fabulous_sky_26b.gds
+	cp macro/lef/tt_um_fabulous_sky_26b.lef lef/tt_um_fabulous_sky_26b.lef
 .PHONY: copy-tt
