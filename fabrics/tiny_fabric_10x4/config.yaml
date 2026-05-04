@@ -47,13 +47,19 @@ pdk::sky130*:
     # Routing
     RT_MAX_LAYER: met4
 
+    # Timing model generation
+    FABULOUS_TIMING_MODEL: PHYSICAL
+
 pdk::gf180mcu*:
     # Routing
     RT_MAX_LAYER: Metal4
+
+    # Timing model generation
+    FABULOUS_TIMING_MODEL: PHYSICAL
 
 pdk::ihp-sg13*:
     # Routing
     RT_MAX_LAYER: Metal5
     
     # Timing model generation
-    #FABULOUS_TIMING_MODEL: PHYSICAL
+    FABULOUS_TIMING_MODEL: PHYSICAL
